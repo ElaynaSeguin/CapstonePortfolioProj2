@@ -1,9 +1,12 @@
 package cntrllr;
 
+import database.Database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -20,9 +23,19 @@ public class CreateJournalController {
     @FXML
     private Button Cancel;
     
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField dateField;
+    @FXML
+    private TextArea jtextField;
+    
     
     Stage stage;
 	BorderPane root;
+	
+	
 	
 	/**
 	 * This method cancels journal creation and redirects user to main journal screen.
@@ -46,13 +59,17 @@ public class CreateJournalController {
      */
     @FXML
     void Save(MouseEvent event) throws Exception{
+        String titleText = titleField.getText();
+        String dateText = dateField.getText();
+        String jText = jtextField.getText();
     	stage = (Stage) Cancel.getScene().getWindow();
     	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LoginSuccessPage.fxml"));
 		stage.setTitle("Save Journal and Return to Main Page");
 		//insert some saving action here
+        Database.createNewJournal(titleText, dateText, jText);
 		stage.setScene(new Scene(root));
 		stage.show();
-
+		
     }
     
     

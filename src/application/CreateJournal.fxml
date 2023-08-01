@@ -17,15 +17,15 @@
                   <Image url="@../images/JourEntryTEMPLATE.jpg" />
                </image>
             </ImageView>
-            <TextArea layoutX="263.0" layoutY="25.0" prefHeight="580.0" prefWidth="713.0" />
+            <TextArea fx:id="jtextField" layoutX="263.0" layoutY="25.0" prefHeight="580.0" prefWidth="713.0" />
          </children>
       </AnchorPane>
    </center>
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" promptText="Enter Journal Name" />
-            <TextField layoutX="493.0" layoutY="153.0" prefHeight="33.0" prefWidth="293.0" promptText="Enter Date" />
+            <TextField fx:id="titleField" layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" promptText="Enter Journal Name" />
+            <TextField fx:id="dateField"  layoutX="493.0" layoutY="153.0" prefHeight="33.0" prefWidth="293.0" promptText="Enter Date" />
             <Button fx:id="Save" layoutX="916.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Save" prefHeight="30.0" prefWidth="76.0" text="Save" textFill="#5d6e52" />
             <Button fx:id="Cancel" layoutX="997.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Return" prefHeight="30.0" prefWidth="76.0" text="Cancel" textFill="#5d6e52" />
          </children>
