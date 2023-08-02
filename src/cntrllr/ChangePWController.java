@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 
@@ -82,11 +80,16 @@ public class ChangePWController {
     public boolean verifyDefault(){
     	//enter path to default password file to authenticate
 	    //File file = new File("C:\\Users\\Owner\\eclipse-workspace\\Term_Project_07_22_23\\src\\controller\\Default_Password.txt");
-    	Path path = Paths.get("/src/cntrllr/Default_Password.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
-    	//System.out.println(absPath);
-	    File file = new File(absPath);
+//    	Path path = Paths.get("/src/cntrllr/Default_Password.txt");
+//    	String absPath = path.toAbsolutePath().toString();
+//    	absPath = absPath.replace("\\","\\\\");
+//    	//System.out.println(absPath);
+//	    File file = new File(absPath);
+	    
+
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
+	    File file = new File(pwFile);
 		
 		//Scanner scanner;
 		try {
@@ -117,12 +120,18 @@ public class ChangePWController {
     public boolean confirmPass() {
     	String pass = NewPass.getText();
     	String cpass = ConfirmPass.getText();
-    	Path path = Paths.get("src\\cntrllr\\User_Password.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
+//    	Path path = Paths.get("src\\cntrllr\\User_Password.txt");
+//    	String absPath = path.toAbsolutePath().toString();
+//    	absPath = absPath.replace("\\","\\\\");
+    	
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
+	    File file = new File(pwFile);
+    	
+    	
     	if(pass.equals(cpass)) {
     		try {
-    			PrintStream toFile = new PrintStream(new FileOutputStream(absPath));
+    			PrintStream toFile = new PrintStream(new FileOutputStream(file));
         		toFile.print(pass);
         		toFile.close();
 				
@@ -147,13 +156,13 @@ public class ChangePWController {
 		String question = SecQ.getText();
 		String answer = SecQAnswer.getText();
 		
-    	Path pathQ = Paths.get("src\\cntrllr\\SecQuestion.txt");
-    	String absPathQ = pathQ.toAbsolutePath().toString();
-    	absPathQ = absPathQ.replace("\\","\\\\");
-    	
-    	Path pathA = Paths.get("src\\cntrllr\\SecAnswer.txt");
-    	String absPathA = pathA.toAbsolutePath().toString();
-    	absPathA = absPathA.replace("\\","\\\\");
+        String workingDir = System.getProperty("user.dir");
+        String qFile = workingDir + "/src/cntrllr/SecQuestion.txt";
+	    File absPathQ = new File(qFile);
+	    
+        String aFile = workingDir + "/src/cntrllr/SeAnswer.txt";
+	    File absPathA = new File(aFile);
+	    
     	try {
     		PrintStream toFileQ = new PrintStream(new FileOutputStream(absPathQ));
     		toFileQ.print(question);

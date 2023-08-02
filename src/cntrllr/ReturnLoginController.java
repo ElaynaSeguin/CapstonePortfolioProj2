@@ -2,8 +2,6 @@ package cntrllr;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,12 +57,10 @@ public class ReturnLoginController {
     }
     
     public String showText() {
-			
-		Path path = Paths.get("src\\controller\\User_Password.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
-    	//System.out.println(absPath);
-	    File file = new File(absPath);
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/User_Password.txt";
+	    File file = new File(pwFile);
+    	
 		
 		//Scanner scanner;
 		try {

@@ -2,8 +2,6 @@ package cntrllr;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -73,12 +71,9 @@ public class LoginController {
      */
     public boolean verifydefault(){
     	//enter path to default password file to authenticate
-	    //File file = new File("C:\\Users\\Owner\\eclipse-workspace\\Term_Project_07_22_23\\src\\controller\\Default_Password.txt");
-    	Path path = Paths.get("src\\controller\\Default_Password.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
-    	//System.out.println(absPath);
-	    File file = new File(absPath);
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
+	    File file = new File(pwFile);
 	    invalidResult.setOpacity(0);
 		//Scanner scanner;
 		try {
@@ -95,6 +90,7 @@ public class LoginController {
 			
 		} 
 		catch (FileNotFoundException e) {
+			System.out.println(file);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
