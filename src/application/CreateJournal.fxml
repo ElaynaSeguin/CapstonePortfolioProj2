@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cntrllr.CreateJournalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cntrllr.CreateJournalController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,17 +18,17 @@
                   <Image url="@../images/JourEntryTEMPLATE.jpg" />
                </image>
             </ImageView>
-            <TextArea fx:id="jtextField" layoutX="263.0" layoutY="25.0" prefHeight="580.0" prefWidth="713.0" />
+            <TextArea fx:id="jtextField" layoutX="263.0" layoutY="25.0" prefHeight="580.0" text="" prefWidth="713.0" />
          </children>
       </AnchorPane>
    </center>
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="titleField" layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" promptText="Enter Journal Name" />
-            <TextField fx:id="dateField"  layoutX="493.0" layoutY="153.0" prefHeight="33.0" prefWidth="293.0" promptText="Enter Date" />
+            <TextField id="title" fx:id="titleField" layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" text="" promptText="Enter Journal Name" />
             <Button fx:id="Save" layoutX="916.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Save" prefHeight="30.0" prefWidth="76.0" text="Save" textFill="#5d6e52" />
             <Button fx:id="Cancel" layoutX="997.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Return" prefHeight="30.0" prefWidth="76.0" text="Cancel" textFill="#5d6e52" />
+            <DatePicker fx:id="journalDate" layoutX="496.0" layoutY="155.0" prefHeight="31.0" prefWidth="282.0" promptText="Enter date" />
          </children>
       </AnchorPane>
    </top>

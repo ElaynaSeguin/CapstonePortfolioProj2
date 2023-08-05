@@ -1,9 +1,15 @@
 package cntrllr;
 
 import java.io.File;
+
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.Scanner;
 
 
@@ -16,12 +22,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+
+
 /**
  * This class is used to control the change password page for an initial login from the user. The user will automatically be redirected to this page after entering the default password.
  */
 public class ChangePWController {
 	
 	//ObservableList<String> questionsList = FXCollections.observableArrayList("Who is your favorite author?","What is your favorite book?","What is your first pet's name?");
+	
+	@FXML
+    private Button backOut;
 	
 	@FXML
     private TextField NewPass;
@@ -65,6 +76,7 @@ public class ChangePWController {
     @FXML
     void goNext(MouseEvent event) throws Exception{
     	if(setSecQ() && verifyDefault() && confirmPass() == true) {
+    		loginVerified();
 	    	Stage stage = (Stage) ChangePWButton.getScene().getWindow();
 	    	BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LoginSuccessPage.fxml"));
 	    	stage.setTitle("Stage 2");
@@ -149,7 +161,7 @@ public class ChangePWController {
 //    	absPath = absPath.replace("\\","\\\\");
     	
         String workingDir = System.getProperty("user.dir");
-        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
+        String pwFile = workingDir + "/src/cntrllr/User_Password.txt";
 	    File file = new File(pwFile);
     	
     	
@@ -184,7 +196,7 @@ public class ChangePWController {
         String qFile = workingDir + "/src/cntrllr/SecQuestion.txt";
 	    File absPathQ = new File(qFile);
 	    
-        String aFile = workingDir + "/src/cntrllr/SeAnswer.txt";
+        String aFile = workingDir + "/src/cntrllr/SecAnswer.txt";
 	    File absPathA = new File(aFile);
 	    
     	try {
@@ -206,4 +218,55 @@ public class ChangePWController {
     	return false;
 		
 	}
+	
+	/*
+	 * Change LoginCheck.txt to false
+	 */
+	void loginVerified() throws IOException {
+		//change contents of LoginCheck.txt file
+//		Path path = Paths.get("src\\cntrllr\\LoginCheck.txt");
+//    	String absPath = path.toAbsolutePath().toString();
+//    	absPath = absPath.replace("\\","\\\\");
+//    	File file = new File(absPath);
+    	
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/LoginCheck.txt";
+	    File file = new File(pwFile);
+    	
+    	try {
+			Scanner scanner = new Scanner(file);
+			StringBuffer buffer = new StringBuffer();
+			
+			while(scanner.hasNext()) {
+				buffer.append(scanner.next());
+			}
+			String verification = buffer.toString();
+			scanner.close();
+			
+			verification = verification.replaceAll("true", "false");
+			
+			FileWriter writer = new FileWriter(pwFile);
+			writer.append(verification);
+			writer.flush();
+			writer.close();
+					
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+	}
+	
+	@FXML
+    void goBack1(MouseEvent event) throws Exception{
+    	stage = (Stage) backOut.getScene().getWindow();
+    	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/ReturnLoginPage.fxml"));
+    	stage.setTitle("Main Page");
+		stage.setScene(new Scene(root));
+		stage.show();
+    	
+    }
 }

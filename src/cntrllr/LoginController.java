@@ -71,10 +71,15 @@ public class LoginController {
      */
     public boolean verifydefault(){
     	//enter path to default password file to authenticate
+//        String workingDir = System.getProperty("user.dir");
+//        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
+//	    File file = new File(pwFile);
+//	    invalidResult.setOpacity(0);
+	    
         String workingDir = System.getProperty("user.dir");
         String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
 	    File file = new File(pwFile);
-	    invalidResult.setOpacity(0);
+	    
 		//Scanner scanner;
 		try {
 			String entry = passEntry.getText();

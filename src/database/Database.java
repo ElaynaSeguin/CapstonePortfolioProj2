@@ -14,8 +14,8 @@ public class Database {
     private static final String DB_URL = "jdbc:sqlite:journaldb.db"; // SQLite URL
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "password";
-	
-	
+
+
     /**
      * Establishes a database connection.
      *
@@ -27,7 +27,7 @@ public class Database {
 //    	createTable();
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
-    
+
     /**
      * Creates a new journal entry in the database.
      *
@@ -44,9 +44,9 @@ public class Database {
                 statement.executeUpdate();
             }
         }
-    }	
-    
-    
+    }
+
+
     /**
      * Updates the title of a journal entry in the database based on its ID.
      *
@@ -67,8 +67,8 @@ public class Database {
             }
         }
     }
-    
-    
+
+
     /**
      * Deletes a journal entry from the database based on its ID.
      *
@@ -84,8 +84,8 @@ public class Database {
             }
         }
     }
-    
-    
+
+
     /**
      * Retrieves a list of journal objects from the database.
      *
@@ -107,7 +107,7 @@ public class Database {
             throw e;
         }
     }
-    
+
 
     /**
      * Retrieves a single journal object from the database.
@@ -121,7 +121,7 @@ public class Database {
                 PreparedStatement statement = connection.prepareStatement(query)) {
             // Set the id parameter for the query
             statement.setInt(1, id);
-            
+
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Journal journal = new Journal();
@@ -142,8 +142,8 @@ public class Database {
         }
     }
 
-    
-    
+
+
     /**
      * Searches for journal entries that match the given search query.
      *
@@ -162,10 +162,10 @@ public class Database {
         	System.out.println("error" + e);
         	throw e;
         }
-        
-        
+
+
     }
-    
+
     /**
      * Retrieves a list of journal objects from the database.
      *
@@ -186,21 +186,21 @@ public class Database {
 
         return journalList;
     }
-    
-    
-  
+
+
+
     /**
      * Creates the database if it does not exist.
      */
     public static void createDatabase() throws SQLException {
         try (Connection connection = getConnection()){
-             Statement statement = connection.createStatement(); 
+             Statement statement = connection.createStatement();
             String createDatabaseSql = "CREATE DATABASE IF NOT EXISTS journaldb";
             statement.executeUpdate(createDatabaseSql);
         }
     }
-    
-    
+
+
     /**
      * Creates the 'journal' table if it does not exist.
      */
@@ -217,11 +217,11 @@ public class Database {
             statement.executeUpdate(createTableSql);
         }
     }
-    
 
-    
+
+
 	public static void main(String[] args) throws SQLException {
 	}
 
 }
-    
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+
+
+<BorderPane prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cntrllr.EditJournalController">
+
+<AnchorPane prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TextField fx:id="titleField" layoutX="156" layoutY="43" prefWidth="282" />
+   		<Label fx:id="journalIdLabel"/>
+        <DatePicker fx:id="journalDate" layoutX="156" layoutY="90" />
+        <TextArea fx:id="jtextField" layoutX="156" layoutY="144" prefWidth="282" prefHeight="200" />
+        <Button fx:id="saveButton" layoutX="240" layoutY="362" onAction="#saveChanges" text="Save Changes" />
+    </children>
+</AnchorPane>
+</BorderPane>

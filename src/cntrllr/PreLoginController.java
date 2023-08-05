@@ -20,12 +20,12 @@ public class PreLoginController {
 
     @FXML
     private Button Return;
-    
-    
+
+
     Stage stage;
 	BorderPane root;
     @FXML
-    
+
     /**
      * This method directs user to Default Password Page. At this time it is clickable whether first time or returning. In future release, will not be clickable if returning.
      * @param event occurs when FirstTime Button is clicked
@@ -38,7 +38,7 @@ public class PreLoginController {
     	stage.setScene(new Scene(root));
 		stage.show();
     }
-    
+
    /**
     * This method directs user to Return Login page. This assumes that user has changed default passwor
     * @param event occurs when returning user button is clicked

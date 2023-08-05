@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.Scanner;
 
 import javafx.fxml.FXML;
@@ -32,6 +32,9 @@ public class ResetPWController {
  * 
  * 5. get boolean returns for requirements and if true, execute gonext function to main page on change pw button click
  */
+	@FXML
+    private Button backOut;
+	
 	@FXML
     private TextField NewPass;
 
@@ -67,6 +70,16 @@ public class ResetPWController {
      * @param event occurs on button mouse click
      * @throws Exception
      */
+    
+    @FXML
+    void goBack1(MouseEvent event) throws Exception{
+    	stage = (Stage) backOut.getScene().getWindow();
+    	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/ReturnLoginPage.fxml"));
+    	stage.setTitle("Main Page");
+		stage.setScene(new Scene(root));
+		stage.show();
+    	
+    }
     
 	@FXML
     void goNext(MouseEvent event) throws Exception{
@@ -109,9 +122,14 @@ public class ResetPWController {
 	public boolean confirmPass() {
     	String pass = NewPass.getText();
     	String cpass = ConfirmPass.getText();
-    	Path path = Paths.get("src\\cntrllr\\User_Password.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
+//    	Path path = Paths.get("src\\cntrllr\\User_Password.txt");
+//    	String absPath = path.toAbsolutePath().toString();
+//    	absPath = absPath.replace("\\","\\\\");
+    	
+        String workingDir = System.getProperty("user.dir");
+        String pwFile = workingDir + "/src/cntrllr/User_Password.txt";
+	    File absPath = new File(pwFile);
+    	
     	if(pass.equals(cpass)) {
     		try {
     			PrintStream toFile = new PrintStream(new FileOutputStream(absPath));
@@ -137,11 +155,17 @@ public class ResetPWController {
 	 * @return true if security question matches (case-sensitive), else false
 	 */
 	public boolean confirmSecQ() {
+		
 		showText();
 		//String answer = SecQAnswer.getText();
-		Path pathA = Paths.get("src\\cntrllr\\SecAnswer.txt");
-    	String absPathA = pathA.toAbsolutePath().toString();
-    	absPathA = absPathA.replace("\\","\\\\");
+//		Path pathA = Paths.get("src\\cntrllr\\SecAnswer.txt");
+//    	String absPathA = pathA.toAbsolutePath().toString();
+//    	absPathA = absPathA.replace("\\","\\\\");
+    	
+        String workingDir = System.getProperty("user.dir");
+        String absPathA = workingDir + "/src/cntrllr/SecAnswer.txt";
+//	    File file = new File(pwFile);
+    	
     	File file = new File(absPathA);
     	try {
 			String entry = SecQAnswer.getText();
@@ -163,6 +187,8 @@ public class ResetPWController {
     	
 		return false;
 	}
+	
+	
 
 	/**
 	 * To display user's custom security question
@@ -170,13 +196,23 @@ public class ResetPWController {
 	 * TODO: Need to find a way to properly display user input. 
 	 */
 	void showText() {
-		text = new Text();
 		
-		Path path = Paths.get("src\\cntrllr\\SecQuestion.txt");
-    	String absPath = path.toAbsolutePath().toString();
-    	absPath = absPath.replace("\\","\\\\");
-    	//System.out.println(absPath);
-	    File file = new File(absPath);
+		text = new Text();
+		text.setOpacity(0);
+		
+//		Path path = Paths.get("src\\cntrllr\\SecQuestion.txt");
+//    	String absPath = path.toAbsolutePath().toString();
+//    	absPath = absPath.replace("\\","\\\\");
+//    	//System.out.println(absPath);
+//	    File file = new File(absPath);
+	    
+	    
+    	
+        String workingDir = System.getProperty("user.dir");
+        String absPath = workingDir + "/src/cntrllr/SecQuestion.txt";
+//	    File file = new File(pwFile);
+    	
+    	File file = new File(absPath);
 		
 		//Scanner scanner;
 		try {
@@ -188,7 +224,9 @@ public class ResetPWController {
 		    }
 			scanner.close();
 			text.setText(question);
-			text.setVisible(true);
+			//text.setVisible(true);
+			text.setOpacity(1);
+    		text.setVisible(true);
 			//showSecQuestion.appendText(question);
 			
 		}
