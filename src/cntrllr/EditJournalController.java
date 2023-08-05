@@ -1,14 +1,11 @@
 package cntrllr;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 import database.Database;
 import database.Journal;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -30,19 +27,19 @@ public class EditJournalController {
 
     @FXML
     private Button saveButton;
-    
+
     @FXML
     private Label journalIdLabel;
-    
-    private Journal selectedJournal;
-	
-//    Stage stage;
-//
-//    BorderPane root;
 
-	
-    
-    
+    private Journal selectedJournal;
+
+    Stage stage;
+
+    BorderPane root;
+
+
+
+
 
     // Method to set the selected journal for editing
     public void setJournal(Journal journal) {
@@ -73,18 +70,20 @@ public class EditJournalController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//
-    	Stage stage = (Stage) saveButton.getScene().getWindow();
-		BorderPane root = null;
-		try {
-			root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LoginSuccessPage.fxml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	stage.setTitle("Change Password Page");
-    	stage.setScene(new Scene(root));
-		stage.show();
+
+
+
+//    	Stage stage = (Stage) saveButton.getScene().getWindow();
+//		BorderPane root = null;
+//		try {
+//			root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LoginSuccessPage.fxml"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	stage.setTitle("Change Password Page");
+//    	stage.setScene(new Scene(root));
+//		stage.show();
 
     }
 

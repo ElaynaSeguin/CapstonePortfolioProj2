@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import database.Database;
 import database.Journal;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -192,7 +191,6 @@ public class LoginSuccessController {
 
     /**
      * This method handles the delete button and action
-     * @param event occurs when user clicks "Search" Button
      * @throws Exception
      */
     @FXML
@@ -204,20 +202,20 @@ public class LoginSuccessController {
                     private final Button deleteButton = new Button("Delete");
 
                     {
-                        deleteButton.setOnAction((ActionEvent event) -> { // handle button click
+                        deleteButton.setOnAction(event -> { // handle button click
                             Journal journal = getTableView().getItems().get(getIndex()); // get the journal that was clicked
 
                             try {
-								Database.deleteJournal(journal.getJournalId()); // delete the journal by passing in the id
-					            ObservableList<Journal> journalList = Database.getAllRecords(); // get all the records
+                                Database.deleteJournal(journal.getJournalId()); // delete the journal by passing in the id
+                                ObservableList<Journal> journalList = Database.getAllRecords(); // get all the records
 
-					            // Set the journals into the table view
-					            journalTable.setItems(journalList);
+                                // Set the journals into the table view
+                                journalTable.setItems(journalList);
 
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+                            } catch (SQLException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         });
                     }
 
@@ -246,16 +244,15 @@ public class LoginSuccessController {
                     private final Button editButton = new Button("Edit");
 
                     {
-                        editButton.setOnAction((ActionEvent event) -> {
+                        editButton.setOnAction(event -> {
                             Journal journal = getTableView().getItems().get(getIndex());
-
 
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/EditJournal.fxml"));
                                 BorderPane root = loader.load();
                                 EditJournalController editJournalController = loader.getController();
                                 editJournalController.setJournal(journal); // Pass the selected journal to the edit view controller
-
+                                // set the new stage
                                 Stage stage = new Stage();
                                 stage.setTitle("Edit Journal");
                                 stage.setScene(new Scene(root));
@@ -264,7 +261,6 @@ public class LoginSuccessController {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-
 
                         });
                     }
@@ -282,6 +278,7 @@ public class LoginSuccessController {
             }
         };
     }
+
 
 
 

@@ -6,6 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cntrllr.ReturnLoginController">
    <center>
@@ -16,9 +18,14 @@
                   <Image url="@../images/ReturnLogin.jpg" />
                </image>
             </ImageView>
-            <TextField layoutX="447.0" layoutY="132.0" prefHeight="31.0" prefWidth="203.0" promptText="Enter Default Password" />
+            <TextField fx:id="passEntry" layoutX="447.0" layoutY="132.0" prefHeight="31.0" prefWidth="203.0" promptText="Enter Default Password" />
             <Button fx:id="LoginButton" layoutX="671.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#handleLogin" prefHeight="30.0" prefWidth="78.0" text="Login" textFill="#5d6e52" />
             <Button fx:id="ResetPass" layoutX="544.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#GoReset" prefHeight="25.0" prefWidth="116.0" text="Reset Password" textFill="#5d6e52" />
+            <Text fx:id="invalidResult" fill="#f50000" layoutX="760.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid result, please try again" visible="false" wrappingWidth="302.0791015625">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>

@@ -59,8 +59,16 @@ public class ResetPWController {
     @FXML
     private Text text;
     
+    @FXML
+    private Button securityButton;
+    
+    @FXML
+    private Text invalidResult;
+    
     Stage stage;
     BorderPane root;
+    
+    
 	
     //@FXML
     //private Button showText;
@@ -83,6 +91,7 @@ public class ResetPWController {
     
 	@FXML
     void goNext(MouseEvent event) throws Exception{
+		invalidResult.setVisible(false);
     	if(confirmSecQ() && confirmPass() == true) {
 	    	Stage stage = (Stage) ChangePWButton.getScene().getWindow();
 	    	BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LoginSuccessPage.fxml"));
@@ -91,6 +100,8 @@ public class ResetPWController {
 			stage.show();
     	}
 		else {
+			invalidResult.setOpacity(1);
+    		invalidResult.setVisible(true);
 			System.out.println("Please double check fields.");
 			//System.out.println("Sec Q: " + setSecQ());
 			//System.out.println("Verify Default: " + verifyDefault());
@@ -156,7 +167,7 @@ public class ResetPWController {
 	 */
 	public boolean confirmSecQ() {
 		
-		showText();
+	
 		//String answer = SecQAnswer.getText();
 //		Path pathA = Paths.get("src\\cntrllr\\SecAnswer.txt");
 //    	String absPathA = pathA.toAbsolutePath().toString();
@@ -188,14 +199,50 @@ public class ResetPWController {
 		return false;
 	}
 	
-	
+	@FXML
+    void appear(MouseEvent event) throws Exception{
+		
+		text = new Text();
+		//text.setOpacity(0);
+		String workingDir = System.getProperty("user.dir");
+        String absPath = workingDir + "/src/cntrllr/SecQuestion.txt";
+//	    File file = new File(pwFile);
+    	
+    	File file = new File(absPath);
+		
+		//Scanner scanner;
+		try {
+			String question = null;
+			Scanner scanner = new Scanner(file);
+			while(scanner.hasNext()) {
+				question = scanner.next();	
+				showSecQuestion.appendText(question + " ");
+		    }
+			scanner.close();
+			text.setText(question);
+			//text.setVisible(true);
+			text.setOpacity(1);
+    		text.setVisible(true);
+    		securityButton.setDisable(true);
+    		securityButton.setVisible(false);
+
+    		
+			//showSecQuestion.appendText(question);
+			
+		}
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    }
 
 	/**
 	 * To display user's custom security question
 	 * Only displays currently if security answer is improperly entered or goNext button does not work
 	 * TODO: Need to find a way to properly display user input. 
 	 */
-	void showText() {
+	/*void showText() {
 		
 		text = new Text();
 		text.setOpacity(0);
@@ -234,7 +281,7 @@ public class ResetPWController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 
 }

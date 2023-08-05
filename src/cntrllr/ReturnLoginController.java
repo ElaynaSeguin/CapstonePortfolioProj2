@@ -63,7 +63,7 @@ public class ReturnLoginController {
 			stage.show();
     	}
 		else {
-    		invalidResult.setOpacity(1);
+			invalidResult.setOpacity(1);
     		invalidResult.setVisible(true);
     		
     	}
@@ -100,7 +100,7 @@ public class ReturnLoginController {
         String workingDir = System.getProperty("user.dir");
         String pwFile = workingDir + "/src/cntrllr/User_Password.txt";
 	    File file = new File(pwFile);
-	    invalidResult.setOpacity(0);
+	    //invalidResult.setOpacity(0);
 		//Scanner scanner;
 		try {
 			String entry = passEntry.getText();

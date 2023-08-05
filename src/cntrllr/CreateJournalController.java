@@ -76,11 +76,11 @@ public class CreateJournalController {
     void Save(MouseEvent event) throws Exception{
 
         LocalDate selectedDate = journalDate.getValue();
+        String titleText = titleField.getText();
         if (selectedDate == null) {
         	selectedDate = LocalDate.now();
         }
         String dateString = selectedDate.toString();
-        String titleText = titleField.getText();
         String jText = jtextField.getText();
         Database.createNewJournal(titleText, dateString, jText);
     	stage = (Stage) Cancel.getScene().getWindow();

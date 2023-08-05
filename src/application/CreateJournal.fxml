@@ -25,7 +25,7 @@
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField id="title" fx:id="titleField" layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" text="" promptText="Enter Journal Name" />
+            <TextField id="title" fx:id="titleField" layoutX="493.0" layoutY="111.0" prefHeight="31.0" prefWidth="294.0" text="Default Title" promptText="Enter Journal Name" />
             <Button fx:id="Save" layoutX="916.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Save" prefHeight="30.0" prefWidth="76.0" text="Save" textFill="#5d6e52" />
             <Button fx:id="Cancel" layoutX="997.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Return" prefHeight="30.0" prefWidth="76.0" text="Cancel" textFill="#5d6e52" />
             <DatePicker fx:id="journalDate" layoutX="496.0" layoutY="155.0" prefHeight="31.0" prefWidth="282.0" promptText="Enter date" />

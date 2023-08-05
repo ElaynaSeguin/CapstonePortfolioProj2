@@ -1,17 +1,16 @@
 package application;
-	
+
 import java.io.File;
 import java.io.FileNotFoundException;
-
 //import java.nio.file.Path;
 //import java.nio.file.Paths;
 import java.util.Scanner;
 
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
 
 /**
  * This is a javadoc for Your Journal, a personalized journal available as a desktop application
@@ -30,7 +29,7 @@ public class Main extends Application {
 		try {
 			BorderPane root;
 			//BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-			if (verifyLogin() == true) {
+			if (verifyLogin()) {
 				root = (BorderPane)FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 				System.out.println("True");
 			}
@@ -47,37 +46,37 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public boolean verifyLogin() {
 //		Path path = Paths.get("src\\cntrllr\\LoginCheck.txt");
 //    	String absPath = path.toAbsolutePath().toString();
 //    	absPath = absPath.replace("\\","\\\\");
 //    	File file = new File(absPath);
-//    	
-//    	
+//
+//
         String workingDir = System.getProperty("user.dir");
         String pwFile = workingDir + "/src/cntrllr/LoginCheck.txt";
 	    File file = new File(pwFile);
-    	
+
 	    System.out.println("here");
-    	
+
     	try {
 			String checkFirstTime = null;
 			Scanner scanner = new Scanner(file);
 			while(scanner.hasNext()) {
-				checkFirstTime = scanner.next();	
+				checkFirstTime = scanner.next();
 		    }
 			scanner.close();
 			System.out.println(checkFirstTime + " value");
 			if (checkFirstTime.equals("true")) {
 				return true;
 			}
-			
-		} 
+
+		}
 		catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

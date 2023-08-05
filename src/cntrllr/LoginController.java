@@ -22,23 +22,23 @@ import javafx.stage.Stage;
  * This class handles the default password page that logs a user into the system for the first time. This class points the user to the change password page before going to the main journal page.
  */
 public class LoginController {
-	
+
 	ObservableList<String> questionsList = FXCollections.observableArrayList("Who is your favorite author?","What is your favorite book?","What is your first pet's name?");
-	
+
 	@FXML private TextField securityQuestionField;
-	
+
 	@FXML private ComboBox<String> questionOptionsBox;
-	
+
     @FXML
     private Button LoginButton;
-    
+
     @FXML
     private TextField passEntry;
-    
+
     @FXML
     private Text invalidResult;
-    
-    
+
+
     //invalidResult.setDisable(true);
 
     /**
@@ -50,7 +50,7 @@ public class LoginController {
     void LoginDirect(MouseEvent event) throws Exception{
     	invalidResult.setVisible(false);
     	boolean res = verifydefault();
-    	if (res == true) {
+    	if (res) {
 	    	Stage stage = (Stage) LoginButton.getScene().getWindow();
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/ChangePassword.fxml"));
 	    	stage.setTitle("Change Password Page");
@@ -60,11 +60,11 @@ public class LoginController {
     	else {
     		invalidResult.setOpacity(1);
     		invalidResult.setVisible(true);
-    		
+
     	}
 
     }
-    
+
     /**
      * This method adds authentication of user default password, found in default password text file
      * @return true if user entry matches default password on file
@@ -75,18 +75,18 @@ public class LoginController {
 //        String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
 //	    File file = new File(pwFile);
 //	    invalidResult.setOpacity(0);
-	    
+
         String workingDir = System.getProperty("user.dir");
         String pwFile = workingDir + "/src/cntrllr/Default_Password.txt";
 	    File file = new File(pwFile);
-	    
+
 		//Scanner scanner;
 		try {
 			String entry = passEntry.getText();
 			String password = null;
 			Scanner scanner = new Scanner(file);
 			while(scanner.hasNext()) {
-				password = scanner.next();	
+				password = scanner.next();
 		    }
 			scanner.close();
 			System.out.println(password);
@@ -96,19 +96,19 @@ public class LoginController {
 				System.out.println(entry);
 				return true;
 			}
-			
-		} 
+
+		}
 		catch (FileNotFoundException e) {
 			System.out.println(file);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 			System.out.println("failed");
 			return false;
     }
-	
 
-	
-	
+
+
+
 }

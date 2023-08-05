@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+
 
 
 
@@ -25,6 +27,8 @@
    <top>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <TextField fx:id="searchField" layoutX="300" layoutY="22.0" prefHeight="32.0" prefWidth="102.0" promptText="Search Journals" />
+            <Button fx:id="searchButton" layoutX="450" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#searchJournals" prefHeight="32.0" prefWidth="102.0" text="Search" textFill="#5d6e52" />
             <Button fx:id="Logout" layoutX="1000" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#goNext" prefHeight="32.0" prefWidth="102.0" text="Logout" textFill="#5d6e52" />
             <Button fx:id="NewEntry" layoutX="800" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#newJournal" prefHeight="32.0" prefWidth="102.0" text="New Entry" textFill="#5d6e52" />
             <Button fx:id="ChangePW" layoutX="600" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#changePW" prefHeight="32.0" prefWidth="102.0" text="ChangePassword" textFill="#5d6e52" />
