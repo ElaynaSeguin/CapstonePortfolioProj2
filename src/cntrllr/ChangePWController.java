@@ -41,6 +41,13 @@ public class ChangePWController {
     @FXML
     private Button ChangePWButton;
     
+    @FXML
+    private Button back;
+    
+    
+    Stage stage;
+    BorderPane root;
+    
     /**
      * This method is used to redirect the application after successfully filling out the required fields to change the password. 
      * The required fields include a custom security question, security question answer, default password, new password, confirm new password.
@@ -72,6 +79,23 @@ public class ChangePWController {
 			//invalidResult.setVisible(true);
 		}
     }
+    
+    /**
+     * This method takes user to main page after successfully reseting password
+     * @param event occurs on button mouse click
+     * @throws Exception
+     */
+    
+	@FXML
+    void goBack(MouseEvent event) throws Exception{
+    	stage = (Stage) back.getScene().getWindow();
+    	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LogInSuccesPage.fxml"));
+    	stage.setTitle("Logout");
+		stage.setScene(new Scene(root));
+		stage.show();
+    }
+	
+    
     
     /**
      * Verifies user input to password in text file

@@ -39,6 +39,9 @@ public class LoginSuccessController {
     @FXML
     private Button NewEntry;
     
+    @FXML
+    private Button ChangePW;
+    
     
     @FXML
     private TableView<Journal> journalTable;
@@ -74,26 +77,6 @@ public class LoginSuccessController {
     }
     
     
-    @FXML
-    private void initialize() {
-        // Set cell value factories to extract values from the Journal object
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("journalId"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        textColumn.setCellValueFactory(new PropertyValueFactory<>("text"));
-
-        try {
-            // Retrieve all journal records from the database
-            ObservableList<Journal> journalList = Database.getAllRecords();
-
-            // Set the retrieved journals to the TableView
-            journalTable.setItems(journalList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    
     /**
      * This method returns user to returning user login page.
      * @param event occurs when user clicks "Logout" button
@@ -108,6 +91,44 @@ public class LoginSuccessController {
 		stage.show();
     	
     }
+    
+    /**
+     * This method returns user to returning user login page.
+     * @param event occurs when user clicks "Logout" button
+     * @throws Exception
+     */
+    @FXML
+    void changePW(MouseEvent event) throws Exception{
+    	stage = (Stage) ChangePW.getScene().getWindow();
+    	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/ResetPassword.fxml"));
+    	stage.setTitle("Logout");
+		stage.setScene(new Scene(root));
+		stage.show();
+    	
+    }    
+    
+    
+    @FXML
+    private void initialize() {
+        // Set cell value factories to extract values from the Journal object
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("journalId"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        textColumn.setCellValueFactory(new PropertyValueFactory<>("text"));
+
+        try {
+        	Database.createTable();
+            // Retrieve all journal records from the database
+            ObservableList<Journal> journalList = Database.getAllRecords();
+
+            // Set the retrieved journals to the TableView
+            journalTable.setItems(journalList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
   
 	
 

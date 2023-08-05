@@ -51,7 +51,13 @@ public class ResetPWController {
     private Button ChangePWButton;
     
     @FXML
+    private Button back;
+    
+    @FXML
     private Text text;
+    
+    Stage stage;
+    BorderPane root;
 	
     //@FXML
     //private Button showText;
@@ -79,6 +85,22 @@ public class ResetPWController {
 			//invalidResult.setVisible(true);
 		}
     }
+	
+    /**
+     * This method takes user to main page after successfully reseting password
+     * @param event occurs on button mouse click
+     * @throws Exception
+     */
+    
+	@FXML
+    void goBack(MouseEvent event) throws Exception{
+    	stage = (Stage) back.getScene().getWindow();
+    	root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/LogInSuccessPage.fxml"));
+    	stage.setTitle("Logout");
+		stage.setScene(new Scene(root));
+		stage.show();
+    }
+	
 	
 	/**
 	 * Confirms that user input in password and confirm password fields match

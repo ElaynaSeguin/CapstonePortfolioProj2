@@ -20,7 +20,16 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-         <TableView fx:id="journalTable" prefHeight="600.0" prefWidth="1000.0" layoutX="100.0" layoutY="100.0">
+
+   </center>
+   <top>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="Logout" layoutX="1000" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#goNext" prefHeight="32.0" prefWidth="102.0" text="Logout" textFill="#5d6e52" />
+            <Button fx:id="NewEntry" layoutX="800" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#newJournal" prefHeight="32.0" prefWidth="102.0" text="New Entry" textFill="#5d6e52" />
+            <Button fx:id="ChangePW" layoutX="600" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#changePW" prefHeight="32.0" prefWidth="102.0" text="ChangePassword" textFill="#5d6e52" />
+         </children>
+                  <TableView fx:id="journalTable" prefHeight="600.0" prefWidth="1000.0" layoutX="100.0" layoutY="100.0">
     <columns>
         <TableColumn fx:id="idColumn" text="ID" />
         <TableColumn fx:id="titleColumn" text="Title" />
@@ -28,12 +37,6 @@
         <TableColumn fx:id="textColumn" text="Text" />
     </columns>
 </TableView>
-   </center>
-   <top>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="Logout" layoutX="941.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#goNext" prefHeight="32.0" prefWidth="102.0" text="Logout" textFill="#5d6e52" />
-            <Button fx:id="NewEntry" layoutX="828.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#newJournal" prefHeight="32.0" prefWidth="102.0" text="New Entry" textFill="#5d6e52" />
-         </children></AnchorPane>
+         </AnchorPane>
    </top>
 </BorderPane>

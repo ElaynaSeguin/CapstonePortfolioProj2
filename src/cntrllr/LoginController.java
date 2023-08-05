@@ -84,7 +84,11 @@ public class LoginController {
 				password = scanner.next();	
 		    }
 			scanner.close();
+			System.out.println(password);
+			System.out.println(entry);
 			if (password.equals(entry)) {
+				System.out.println(password);
+				System.out.println(entry);
 				return true;
 			}
 			

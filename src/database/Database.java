@@ -24,6 +24,7 @@ public class Database {
      */
 
     private static Connection getConnection() throws SQLException {
+//    	createTable();
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
     
